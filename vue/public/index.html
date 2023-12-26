@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Portfolio: Azilah J.</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://azilahj.github.io" class="navigation-icon"><i class="fas fa-home"></i></a></li>
+                <li><a href="">Azilah J.: Portfolio</a></li>
+                <li><a href="#wordpress" onclick="toggleDiv('wordpress')">WordPress</a></li>
+                <li><a href="#flutter" onclick="toggleDiv('flutter')">Flutter</a></li>
+                <li><a href="#php" onclick="toggleDiv('php')">PHP</a></li>
+                <li><a href="https://azilahj-react-6fab68addcfa.herokuapp.com/">ReactJS</a></li>
+                <li><a href="https://azilahj-vue-fc7be51804e6.herokuapp.com/">VueJS</a></li>
+                <li><a href="https://github.com/azilahj"><i class="fab fa-github"></i> Github</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="grid-container" id="flutter" style="display:none;">
+        <div class="grid-item"></div>
+        <div id="intro">
+            <h5>Introducing the To-Do App! It was a significant part of my practice to improve
+                my programming skills and revisit Flutter development. This app helps you keep track of tasks, grocery
+                lists, and more. Take a look at the images below for a peep!</h5>
+        </div>
+        <div class="grid-item">
+            <img src="flutter1.JPG" alt="Portfolio Item 1">
+        </div>
+        <div class="grid-item">
+            <img src="flutter2.JPG" alt="Portfolio Item 2">
+        </div>
+        <div class="grid-item">
+            <img src="flutter3.JPG" alt="Portfolio Item 3">
+        </div>
+        <div class="grid-item">
+            <img src="flutter4.JPG" alt="Portfolio Item 4">
+        </div>
+        <div class="grid-item">
+            <img src="flutter5.JPG" alt="Portfolio Item 5">
+        </div>
+        <div class="grid-item">
+            <img src="flutter6.JPG" alt="Portfolio Item 6">
+        </div>
+    </div>
+
+    <div class="grid-container-2" id="wordpress" style="display:none;">
+        <div class="grid-item"></div>
+        <div id="intro2">
+            <h4><a href="https://azimuthgeos.com/" target="_blank" class="website-icon"><i class="fab fa-wordpress"></i></a></h4>
+            <h5>I'm excited to present a professional WordPress website I worked on for a geosolutions company. The site
+                features captivating visuals and intuitive functionality. Explore the screenshots below to see the key
+                features. Thank you for visiting this section of my portfolio!</h5>
+        </div>
+        <div class="grid-item">
+            <img src="wordpress1.png" alt="Portfolio Item 7">
+        </div>
+        <div class="grid-item">
+            <img src="wordpress2.png" alt="Portfolio Item 8">
+        </div>
+        <div class="grid-item">
+            <img src="wordpress3.png" alt="Portfolio Item 9">
+        </div>
+        <div class="grid-item">
+            <img src="wordpress4.png" alt="Portfolio Item 10">
+        </div>
+    </div>
+	
+	<div id="vue-app" style="display:none;">
+	</div>
+	<div id="react-app" style="display:none;">
+	</div>
+
+    <!-- Full-page sized display section -->
+    <section class="countdown-section" id="php" style="display:none;">
+        <div class="event-list">
+            <h2>Upcoming Events</h2>
+            <ul>
+                <li>Event 1 - 2 days left</li>
+                <li>Event 2 - 5 days left</li>
+                <li>Event 3 - 10 days left</li>
+                <li>
+                    <div id="message"></div>
+                </li>
+            </ul>
+            <button onclick="bookRoom()" id="book-main">Book Room</button>
+            
+            <div class="status-message">
+                <br><br>
+                <span class="under-construction-icon"><i class="fas fa-tools"></i></span>
+                <p>Sorry, this page is currently under construction. Please check back later.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal dialog -->
+    <div class="modal-overlay" id="modalOverlay" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="form-container" id="php_form">
+                <h1>Meeting Room Booking</h1>
+                <form id="bookingForm">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+
+                    <label for="duration">Duration (hours):</label>
+                    <input type="number" id="duration" name="duration" min="1" max="8" required>
+
+                    <label for="room">Select a Room:</label>
+                    <select id="room" name="room" required>
+                        <option value="">Choose a room</option>
+                        <option value="Room 1">Room 1</option>
+                        <option value="Room 2">Room 2</option>
+                        <option value="Room 3">Room 3</option>
+                    </select>
+
+                    <button type="button" id="submitBtn">Book Room</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+	
+
+    <script>
+        function bookRoom() {
+            var modalOverlay = document.getElementById('modalOverlay');
+            //modalOverlay.style.display = 'block';
+            if (modalOverlay.style.display === 'none') {
+                modalOverlay.style.display = 'block';
+            } else {
+                modalOverlay.style.display = 'none';
+            }
+        }
+
+        function closeModal() {
+            var modalOverlay = document.getElementById('modalOverlay');
+            modalOverlay.style.display = 'none';
+        }
+
+    </script>
+
+
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", function () {
+            // Get form data
+            const formData = new FormData(document.getElementById("bookingForm"));
+
+            // Send the form data asynchronously using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "book_form.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById("message").innerHTML = xhr.responseText;
+                    } else {
+                        document.getElementById("message").innerHTML = "Error: " + xhr.responseText;
+                    }
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
+	
+	<script>
+        function toggleDiv(sectionId) {
+            var sectionsToHide = ['wordpress', 'flutter', 'php', 'vue-app', 'react-app'];
+
+            for (let id of sectionsToHide) {
+                if (id !== sectionId) {
+                    document.getElementById(id).style.display = 'none';
+                }
+            }
+
+            var section = document.getElementById(sectionId);
+            section.style.display = section.style.display === 'none' ? 'grid' : 'none';
+
+        }
+    </script>
+
+
+<footer>
+    <p>&copy; 2023 Azilah. All rights reserved.</p>
+</footer>
+</body>
+
+</html>
